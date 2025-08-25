@@ -1,10 +1,60 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Shield, Clock } from "lucide-react";
+import { CheckCircle, Shield, Clock, ChevronRight, Home, DollarSign, Smartphone, Briefcase } from "lucide-react";
 import QuoteFlow from "./QuoteFlow";
 
 const HeroSection = () => {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  const [miniWizardStep, setMiniWizardStep] = useState(0);
+  const [miniAnswers, setMiniAnswers] = useState<any[]>([]);
+
+  const miniQuestions = [
+    {
+      id: "residence_type",
+      title: "Tipo de residência?",
+      options: [
+        { value: "house_owned", label: "Casa própria", icon: Home },
+        { value: "apt_owned", label: "Apartamento próprio", icon: Home }
+      ]
+    },
+    {
+      id: "property_value",
+      title: "Valor dos bens?",
+      options: [
+        { value: "up_50k", label: "Até R$ 50k", icon: DollarSign },
+        { value: "above_50k", label: "Acima R$ 50k", icon: DollarSign }
+      ]
+    },
+    {
+      id: "priorities",
+      title: "Proteger o quê?",
+      options: [
+        { value: "electronics", label: "Eletrônicos", icon: Smartphone },
+        { value: "everything", label: "Tudo", icon: Shield }
+      ]
+    }
+  ];
+
+  const handleMiniAnswer = (value: string, label: string) => {
+    const newAnswers = [...miniAnswers];
+    newAnswers[miniWizardStep] = { value, label };
+    setMiniAnswers(newAnswers);
+
+    if (miniWizardStep < miniQuestions.length - 1) {
+      setTimeout(() => setMiniWizardStep(miniWizardStep + 1), 300);
+    } else {
+      // Completo - abrir wizard completo
+      setTimeout(() => setIsQuoteOpen(true), 500);
+    }
+  };
+
+  const resetMiniWizard = () => {
+    setMiniWizardStep(0);
+    setMiniAnswers([]);
+  };
+
+  const currentMiniQuestion = miniQuestions[miniWizardStep];
+  const progress = ((miniWizardStep + 1) / miniQuestions.length) * 100;
 
   return (
     <section className="bg-gradient-blue min-h-[90vh] flex items-center relative overflow-hidden">
@@ -57,10 +107,10 @@ const HeroSection = () => {
           </div>
 
           <div className="relative lg:block hidden perspective-1000">
-            {/* Mock 3D Container */}
+            {/* Interactive 3D Onboard Container */}
             <div className="relative transform-gpu preserve-3d">
 
-              {/* Main 3D Card Stack */}
+              {/* Background Cards Stack */}
               <div className="relative">
                 {/* Back Card */}
                 <div className="absolute inset-0 bg-white/5 backdrop-blur-sm rounded-3xl transform rotate-y-12 rotate-x-6 scale-95 shadow-2xl"></div>
@@ -68,8 +118,8 @@ const HeroSection = () => {
                 {/* Middle Card */}
                 <div className="absolute inset-0 bg-white/8 backdrop-blur-sm rounded-3xl transform rotate-y-6 rotate-x-3 scale-98 shadow-xl"></div>
 
-                {/* Front Card - Main Interface */}
-                <div className="relative bg-white/15 backdrop-blur-md rounded-3xl p-8 shadow-2xl transform hover:rotate-y-2 transition-transform duration-700 border border-white/20">
+                {/* Front Card - Interactive Onboard */}
+                <div className="relative bg-white/15 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-white/20 min-h-[400px]">
 
                   {/* Header */}
                   <div className="flex items-center justify-between mb-6">
@@ -78,48 +128,92 @@ const HeroSection = () => {
                       <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
                       <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                     </div>
-                    <div className="text-white/60 text-sm font-mono">zurich.app</div>
+                    <button
+                      onClick={resetMiniWizard}
+                      className="text-white/60 text-sm font-mono hover:text-white/80 transition-colors"
+                    >
+                      cotacao.app
+                    </button>
                   </div>
 
-                  {/* Content Area */}
-                  <div className="space-y-6">
-                    {/* Title Section */}
-                    <div className="text-center">
-                      <h3 className="text-white font-bold text-xl mb-2">Proteção Residencial</h3>
-                      <div className="h-1 w-16 bg-white/40 rounded-full mx-auto"></div>
+                  {/* Progress Bar */}
+                  <div className="mb-6">
+                    <div className="flex justify-between text-white/70 text-xs mb-2">
+                      <span>Progresso</span>
+                      <span>{Math.round(progress)}%</span>
                     </div>
-
-                    {/* Features Grid */}
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-white/10 rounded-xl p-4 transform hover:scale-105 transition-transform">
-                        <Shield className="w-6 h-6 text-white mb-2" />
-                        <div className="text-white/90 text-sm font-medium">Proteção Total</div>
-                      </div>
-                      <div className="bg-white/10 rounded-xl p-4 transform hover:scale-105 transition-transform">
-                        <Clock className="w-6 h-6 text-white mb-2" />
-                        <div className="text-white/90 text-sm font-medium">24h Suporte</div>
-                      </div>
-                    </div>
-
-                    {/* Progress Bar */}
-                    <div className="space-y-3">
-                      <div className="flex justify-between text-white/70 text-xs">
-                        <span>Cobertura</span>
-                        <span>100%</span>
-                      </div>
-                      <div className="h-2 bg-white/20 rounded-full overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-white/60 to-white/40 rounded-full w-full animate-pulse"></div>
-                      </div>
-                    </div>
-
-                    {/* CTA Button */}
-                    <div className="text-center pt-2">
-                      <div className="inline-flex items-center space-x-2 bg-white/20 hover:bg-white/30 transition-colors rounded-xl px-4 py-2 text-white text-sm">
-                        <CheckCircle className="w-4 h-4" />
-                        <span>Solicitar Cotação</span>
-                      </div>
+                    <div className="h-1 bg-white/20 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-white/60 to-white/40 rounded-full transition-all duration-500"
+                        style={{ width: `${progress}%` }}
+                      ></div>
                     </div>
                   </div>
+
+                  {miniWizardStep < miniQuestions.length ? (
+                    /* Question Interface */
+                    <div className="space-y-6 animate-fade-in">
+                      {/* Question Title */}
+                      <div className="text-center">
+                        <h3 className="text-white font-bold text-lg mb-1">{currentMiniQuestion.title}</h3>
+                        <p className="text-white/60 text-sm">Pergunta {miniWizardStep + 1} de {miniQuestions.length}</p>
+                      </div>
+
+                      {/* Answer Options */}
+                      <div className="grid grid-cols-1 gap-3">
+                        {currentMiniQuestion.options.map((option, index) => {
+                          const IconComponent = option.icon;
+                          return (
+                            <button
+                              key={option.value}
+                              onClick={() => handleMiniAnswer(option.value, option.label)}
+                              className="flex items-center space-x-4 bg-white/10 hover:bg-white/20 rounded-xl p-4 transition-all duration-200 transform hover:scale-105 text-left group"
+                            >
+                              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                                <IconComponent className="w-5 h-5 text-white" />
+                              </div>
+                              <div className="flex-1">
+                                <div className="text-white font-medium">{option.label}</div>
+                              </div>
+                              <ChevronRight className="w-4 h-4 text-white/60 group-hover:text-white/80 transition-colors" />
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                      {/* Selected Answers Preview */}
+                      {miniAnswers.length > 0 && (
+                        <div className="mt-6 pt-4 border-t border-white/20">
+                          <div className="text-white/60 text-xs mb-2">Suas respostas:</div>
+                          <div className="flex flex-wrap gap-2">
+                            {miniAnswers.slice(0, miniWizardStep).map((answer, index) => (
+                              <div key={index} className="bg-white/20 text-white text-xs px-2 py-1 rounded-lg">
+                                {answer.label}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    /* Completion State */
+                    <div className="text-center space-y-6 animate-fade-in">
+                      <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto">
+                        <CheckCircle className="w-8 h-8 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-white font-bold text-lg mb-2">Quase pronto!</h3>
+                        <p className="text-white/80 text-sm">Vamos finalizar sua cotação personalizada</p>
+                      </div>
+                      <button
+                        onClick={() => setIsQuoteOpen(true)}
+                        className="inline-flex items-center space-x-2 bg-white/20 hover:bg-white/30 transition-colors rounded-xl px-6 py-3 text-white font-medium"
+                      >
+                        <span>Ver Plano Ideal</span>
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
 
