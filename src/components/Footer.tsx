@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
@@ -10,7 +9,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <div className="flex items-center space-x-2 mb-6">
-              <div className="w-8 h-8 bg-gradient-coral rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-blue rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-lg">Z</span>
               </div>
               <span className="text-2xl font-bold">ZURICH</span>
@@ -18,7 +17,7 @@ const Footer = () => {
             <p className="text-gray-300 mb-6">
               Proteção e tranquilidade para sua residência com o melhor em assistência 24h.
             </p>
-            <Button className="bg-gradient-coral hover:opacity-90 text-white">
+            <Button className="bg-gradient-blue hover:opacity-90 text-white">
               Solicitar Cotação
             </Button>
           </div>

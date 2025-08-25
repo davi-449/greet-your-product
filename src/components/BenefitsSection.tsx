@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -64,7 +63,7 @@ const BenefitsSection = () => {
             <div className="mt-8">
               <Button 
                 size="lg" 
-                className="bg-gradient-coral hover:opacity-90 text-white text-lg px-8 py-4 hover-lift"
+                className="bg-gradient-blue hover:opacity-90 text-white text-lg px-8 py-4 hover-lift"
               >
                 Contratar Agora
               </Button>
@@ -83,7 +82,7 @@ const BenefitsSection = () => {
             </Card>
             
             {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-zurich-coral/20 rounded-full"></div>
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-zurich-blue/20 rounded-full"></div>
             <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-zurich-blue/10 rounded-full"></div>
           </div>
         </div>

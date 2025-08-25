@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, Smartphone, Briefcase, Shield } from "lucide-react";
@@ -47,7 +46,7 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <Card key={index} className="hover-lift border-0 shadow-lg">
               <CardHeader className="text-center pb-4">
-                <div className="w-16 h-16 bg-gradient-coral rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-blue rounded-full flex items-center justify-center mx-auto mb-4">
                   <service.icon className="w-8 h-8 text-white" />
                 </div>
                 <CardTitle className="text-lg text-gray-900 leading-tight">

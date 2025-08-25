@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, X } from "lucide-react";
@@ -46,7 +45,7 @@ const CoverageSection = () => {
   const plans = [
     { name: "Essencial", color: "bg-gray-100", textColor: "text-gray-900" },
     { name: "Completo", color: "bg-zurich-blue", textColor: "text-white" },
-    { name: "Completo +", color: "bg-gradient-coral", textColor: "text-white" }
+    { name: "Completo +", color: "bg-gradient-blue", textColor: "text-white" }
   ];
 
   return (
