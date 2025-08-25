@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import QuoteFlow from "./QuoteFlow";
 
 const Header = () => {
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+
   return (
     <header className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -27,10 +30,18 @@ const Header = () => {
           </a>
         </nav>
 
-        <Button className="bg-gradient-blue hover:opacity-90 text-white border-0">
+        <Button
+          className="bg-gradient-blue hover:opacity-90 text-white border-0"
+          onClick={() => setIsQuoteOpen(true)}
+        >
           Solicitar Cotação
         </Button>
       </div>
+
+      <QuoteFlow
+        open={isQuoteOpen}
+        onOpenChange={setIsQuoteOpen}
+      />
     </header>
   );
 };
