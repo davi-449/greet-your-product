@@ -75,60 +75,56 @@ const BenefitsSection = () => {
           </div>
 
           <div className="relative">
-            {/* Plano Completo+ Card */}
-            <Card className="border-0 shadow-2xl bg-gradient-blue text-white overflow-hidden">
-              <CardContent className="p-8">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold mb-2">Plano Completo +</h3>
-                  <div className="text-3xl font-bold">R$ 119,90<span className="text-lg font-normal">/mês</span></div>
-                </div>
+            {/* Destaque dos Benefícios Exclusivos */}
+            <div className="bg-gradient-blue rounded-3xl p-8 text-white mb-6">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-white">Benefícios Exclusivos</h3>
+                <p className="text-white/80 mt-2">Só no Plano Completo +</p>
+              </div>
 
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span className="text-sm">Regresso antecipado incluído</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span className="text-sm">Atividades profissionais cobertas</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span className="text-sm">Até 12 conjuntos de serviços</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                    <span className="text-sm">Despesas extraordinárias +10%</span>
-                  </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="text-center">
+                  <Shield className="w-8 h-8 mx-auto mb-2 text-white" />
+                  <h4 className="font-semibold text-sm">Regresso Antecipado</h4>
+                  <p className="text-xs text-white/80 mt-1">Cobertura completa</p>
                 </div>
-
-                <div className="mt-6 pt-4 border-t border-white/20">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm opacity-90">Máxima proteção</span>
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                    </div>
-                  </div>
+                <div className="text-center">
+                  <Users className="w-8 h-8 mx-auto mb-2 text-white" />
+                  <h4 className="font-semibold text-sm">Atividade Profissional</h4>
+                  <p className="text-xs text-white/80 mt-1">Proteção no trabalho</p>
                 </div>
-              </CardContent>
-            </Card>
+                <div className="text-center">
+                  <Clock className="w-8 h-8 mx-auto mb-2 text-white" />
+                  <h4 className="font-semibold text-sm">Serviços Ampliados</h4>
+                  <p className="text-xs text-white/80 mt-1">Até 12 conjuntos</p>
+                </div>
+                <div className="text-center">
+                  <Leaf className="w-8 h-8 mx-auto mb-2 text-white" />
+                  <h4 className="font-semibold text-sm">Despesas Extras</h4>
+                  <p className="text-xs text-white/80 mt-1">Cobertura adicional</p>
+                </div>
+              </div>
+            </div>
 
-            {/* Estatísticas adicionais */}
-            <div className="grid grid-cols-2 gap-4 mt-6">
-              <Card className="border-0 shadow-lg bg-white">
-                <CardContent className="p-4 text-center">
-                  <div className="text-2xl font-bold text-zurich-blue">24h</div>
-                  <div className="text-sm text-gray-600">Atendimento</div>
+            {/* Cards de Qualidades */}
+            <div className="grid grid-cols-1 gap-4">
+              <Card className="border-2 border-zurich-blue/20 bg-white shadow-lg">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-zurich-blue/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Shield className="w-6 h-6 text-zurich-blue" />
+                  </div>
+                  <h4 className="font-bold text-zurich-blue mb-1">Máxima Proteção</h4>
+                  <p className="text-sm text-gray-600">O mais completo plano de seguro residencial</p>
                 </CardContent>
               </Card>
-              <Card className="border-0 shadow-lg bg-white">
-                <CardContent className="p-4 text-center">
-                  <div className="text-2xl font-bold text-zurich-blue">100%</div>
-                  <div className="text-sm text-gray-600">Digital</div>
+
+              <Card className="border-2 border-zurich-blue/20 bg-white shadow-lg">
+                <CardContent className="p-6 text-center">
+                  <div className="w-12 h-12 bg-zurich-blue/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Clock className="w-6 h-6 text-zurich-blue" />
+                  </div>
+                  <h4 className="font-bold text-zurich-blue mb-1">Atendimento Premium</h4>
+                  <p className="text-sm text-gray-600">Suporte especializado 24 horas por dia</p>
                 </CardContent>
               </Card>
             </div>
