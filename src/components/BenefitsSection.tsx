@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Clock, Shield, Users, Leaf } from "lucide-react";
+import QuoteFlow from "./QuoteFlow";
 
 const BenefitsSection = () => {
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+
   const benefits = [
     {
       icon: Clock,
@@ -61,9 +64,10 @@ const BenefitsSection = () => {
             </div>
 
             <div className="mt-8">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-gradient-blue hover:opacity-90 text-white text-lg px-8 py-4 hover-lift"
+                onClick={() => setIsQuoteOpen(true)}
               >
                 Contratar Agora
               </Button>
@@ -87,6 +91,11 @@ const BenefitsSection = () => {
           </div>
         </div>
       </div>
+
+      <QuoteFlow
+        open={isQuoteOpen}
+        onOpenChange={setIsQuoteOpen}
+      />
     </section>
   );
 };
