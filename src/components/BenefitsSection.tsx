@@ -75,16 +75,64 @@ const BenefitsSection = () => {
           </div>
 
           <div className="relative">
-            <Card className="border-0 shadow-2xl overflow-hidden">
-              <CardContent className="p-0">
-                <img 
-                  src="/lovable-uploads/8ecdcd31-0f67-4f5f-ae65-3780293de5ed.png"
-                  alt="Detalhes do plano Completo+"
-                  className="w-full h-auto object-cover"
-                />
+            {/* Plano Completo+ Card */}
+            <Card className="border-0 shadow-2xl bg-gradient-blue text-white overflow-hidden">
+              <CardContent className="p-8">
+                <div className="text-center mb-6">
+                  <h3 className="text-2xl font-bold mb-2">Plano Completo +</h3>
+                  <div className="text-3xl font-bold">R$ 119,90<span className="text-lg font-normal">/mês</span></div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                    <span className="text-sm">Regresso antecipado incluído</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                    <span className="text-sm">Atividades profissionais cobertas</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                    <span className="text-sm">Até 12 conjuntos de serviços</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                    <span className="text-sm">Despesas extraordinárias +10%</span>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-white/20">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm opacity-90">Máxima proteção</span>
+                    <div className="flex space-x-1">
+                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                      <div className="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
-            
+
+            {/* Estatísticas adicionais */}
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <Card className="border-0 shadow-lg bg-white">
+                <CardContent className="p-4 text-center">
+                  <div className="text-2xl font-bold text-zurich-blue">24h</div>
+                  <div className="text-sm text-gray-600">Atendimento</div>
+                </CardContent>
+              </Card>
+              <Card className="border-0 shadow-lg bg-white">
+                <CardContent className="p-4 text-center">
+                  <div className="text-2xl font-bold text-zurich-blue">100%</div>
+                  <div className="text-sm text-gray-600">Digital</div>
+                </CardContent>
+              </Card>
+            </div>
+
             {/* Decorative elements */}
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-zurich-blue/20 rounded-full"></div>
             <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-zurich-blue/10 rounded-full"></div>
