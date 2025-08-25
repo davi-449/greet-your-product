@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import QuoteFlow from "./QuoteFlow";
 
 const Footer = () => {
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+
   return (
     <footer id="contato" className="bg-gray-900 text-white py-16">
       <div className="container mx-auto px-4">
@@ -17,7 +20,10 @@ const Footer = () => {
             <p className="text-gray-300 mb-6">
               Proteção e tranquilidade para sua residência com o melhor em assistência 24h.
             </p>
-            <Button className="bg-gradient-blue hover:opacity-90 text-white">
+            <Button
+              className="bg-gradient-blue hover:opacity-90 text-white"
+              onClick={() => setIsQuoteOpen(true)}
+            >
               Solicitar Cotação
             </Button>
           </div>
@@ -76,6 +82,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      <QuoteFlow
+        open={isQuoteOpen}
+        onOpenChange={setIsQuoteOpen}
+      />
     </footer>
   );
 };
