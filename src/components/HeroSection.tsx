@@ -57,17 +57,49 @@ const HeroSection = () => {
           </div>
 
           <div className="relative lg:block hidden">
-            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl hover-lift">
-              <img
-                src="https://images.pexels.com/photos/7218601/pexels-photo-7218601.jpeg"
-                alt="Casal feliz relaxando no sofá em casa - Zurich Residência"
-                className="w-full h-auto object-cover"
-              />
+            <div className="grid grid-cols-2 gap-4">
+              {/* Card Atendimento 24h */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover-lift">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-4">
+                  <Clock className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-white font-semibold text-lg mb-2">24h</h3>
+                <p className="text-white/80 text-sm">Atendimento disponível todos os dias</p>
+              </div>
+
+              {/* Card Proteção Completa */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover-lift">
+                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-4">
+                  <Shield className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-white font-semibold text-lg mb-2">100%</h3>
+                <p className="text-white/80 text-sm">Proteção para sua residência</p>
+              </div>
+
+              {/* Card Serviços */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover-lift col-span-2">
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-semibold text-lg mb-1">3 Planos Disponíveis</h3>
+                    <p className="text-white/80 text-sm">Essencial • Completo • Completo +</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Estatística */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover-lift col-span-2 text-center">
+                <div className="text-3xl font-bold text-white mb-2">R$ 29,90</div>
+                <p className="text-white/80 text-sm">A partir de</p>
+                <p className="text-white/60 text-xs mt-1">por mês</p>
+              </div>
             </div>
-            
+
             {/* Decorative elements */}
-            <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/20 rounded-full"></div>
-            <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-white/10 rounded-full"></div>
+            <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full"></div>
+            <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-white/5 rounded-full"></div>
           </div>
         </div>
       </div>
