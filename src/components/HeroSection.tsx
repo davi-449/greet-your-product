@@ -56,50 +56,80 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="relative lg:block hidden">
-            <div className="grid grid-cols-2 gap-4">
-              {/* Card Atendimento 24h */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover-lift">
-                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-4">
-                  <Clock className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-white font-semibold text-lg mb-2">24h</h3>
-                <p className="text-white/80 text-sm">Atendimento disponível todos os dias</p>
-              </div>
+          <div className="relative lg:block hidden perspective-1000">
+            {/* Mock 3D Container */}
+            <div className="relative transform-gpu preserve-3d">
 
-              {/* Card Proteção Completa */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover-lift">
-                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-4">
-                  <Shield className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-white font-semibold text-lg mb-2">100%</h3>
-                <p className="text-white/80 text-sm">Proteção para sua residência</p>
-              </div>
+              {/* Main 3D Card Stack */}
+              <div className="relative">
+                {/* Back Card */}
+                <div className="absolute inset-0 bg-white/5 backdrop-blur-sm rounded-3xl transform rotate-y-12 rotate-x-6 scale-95 shadow-2xl"></div>
 
-              {/* Card Serviços */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover-lift col-span-2">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-6 h-6 text-white" />
+                {/* Middle Card */}
+                <div className="absolute inset-0 bg-white/8 backdrop-blur-sm rounded-3xl transform rotate-y-6 rotate-x-3 scale-98 shadow-xl"></div>
+
+                {/* Front Card - Main Interface */}
+                <div className="relative bg-white/15 backdrop-blur-md rounded-3xl p-8 shadow-2xl transform hover:rotate-y-2 transition-transform duration-700 border border-white/20">
+
+                  {/* Header */}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center space-x-3">
+                      <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                    </div>
+                    <div className="text-white/60 text-sm font-mono">zurich.app</div>
                   </div>
-                  <div>
-                    <h3 className="text-white font-semibold text-lg mb-1">3 Planos Disponíveis</h3>
-                    <p className="text-white/80 text-sm">Essencial • Completo • Completo +</p>
+
+                  {/* Content Area */}
+                  <div className="space-y-6">
+                    {/* Title Section */}
+                    <div className="text-center">
+                      <h3 className="text-white font-bold text-xl mb-2">Proteção Residencial</h3>
+                      <div className="h-1 w-16 bg-white/40 rounded-full mx-auto"></div>
+                    </div>
+
+                    {/* Features Grid */}
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-white/10 rounded-xl p-4 transform hover:scale-105 transition-transform">
+                        <Shield className="w-6 h-6 text-white mb-2" />
+                        <div className="text-white/90 text-sm font-medium">Proteção Total</div>
+                      </div>
+                      <div className="bg-white/10 rounded-xl p-4 transform hover:scale-105 transition-transform">
+                        <Clock className="w-6 h-6 text-white mb-2" />
+                        <div className="text-white/90 text-sm font-medium">24h Suporte</div>
+                      </div>
+                    </div>
+
+                    {/* Progress Bar */}
+                    <div className="space-y-3">
+                      <div className="flex justify-between text-white/70 text-xs">
+                        <span>Cobertura</span>
+                        <span>100%</span>
+                      </div>
+                      <div className="h-2 bg-white/20 rounded-full overflow-hidden">
+                        <div className="h-full bg-gradient-to-r from-white/60 to-white/40 rounded-full w-full animate-pulse"></div>
+                      </div>
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="text-center pt-2">
+                      <div className="inline-flex items-center space-x-2 bg-white/20 hover:bg-white/30 transition-colors rounded-xl px-4 py-2 text-white text-sm">
+                        <CheckCircle className="w-4 h-4" />
+                        <span>Solicitar Cotação</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Estatística */}
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover-lift col-span-2 text-center">
-                <div className="text-3xl font-bold text-white mb-2">R$ 29,90</div>
-                <p className="text-white/80 text-sm">A partir de</p>
-                <p className="text-white/60 text-xs mt-1">por mês</p>
-              </div>
+              {/* Floating Elements */}
+              <div className="absolute -top-6 -right-6 w-20 h-20 bg-white/10 rounded-2xl transform rotate-45 hover:rotate-90 transition-transform duration-500"></div>
+              <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-white/5 rounded-full blur-sm"></div>
+
+              {/* Light Rays */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent rounded-3xl pointer-events-none"></div>
             </div>
-
-            {/* Decorative elements */}
-            <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full"></div>
-            <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-white/5 rounded-full"></div>
           </div>
         </div>
       </div>
