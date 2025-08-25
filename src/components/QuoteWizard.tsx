@@ -142,104 +142,102 @@ const QuoteWizard: React.FC<QuoteWizardProps> = ({ open, onOpenChange, onComplet
   const canProceed = !!currentAnswer;
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader className="border-b pb-4">
-          <DialogTitle className="text-2xl font-bold text-center">
-            Encontre seu plano ideal
-          </DialogTitle>
-          <div className="space-y-2">
-            <div className="flex justify-between text-sm text-gray-600">
-              <span>Pergunta {currentStep + 1} de {questions.length}</span>
-              <span>{Math.round(progress)}% concluído</span>
-            </div>
-            <Progress value={progress} className="h-2" />
+    <div className="max-w-4xl mx-auto p-6">
+      <div className="border-b pb-4 mb-6">
+        <h2 className="text-2xl font-bold text-center mb-4">
+          Encontre seu plano ideal
+        </h2>
+        <div className="space-y-2">
+          <div className="flex justify-between text-sm text-gray-600">
+            <span>Pergunta {currentStep + 1} de {questions.length}</span>
+            <span>{Math.round(progress)}% concluído</span>
           </div>
-        </DialogHeader>
+          <Progress value={progress} className="h-2" />
+        </div>
+      </div>
 
-        <div className="py-6">
-          <div className="text-center mb-8">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              {currentQuestion.title}
-            </h3>
-            {currentQuestion.subtitle && (
-              <p className="text-gray-600">
-                {currentQuestion.subtitle}
-              </p>
-            )}
-          </div>
+      <div className="py-6">
+        <div className="text-center mb-8">
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            {currentQuestion.title}
+          </h3>
+          {currentQuestion.subtitle && (
+            <p className="text-gray-600">
+              {currentQuestion.subtitle}
+            </p>
+          )}
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
-            {currentQuestion.options.map((option) => {
-              const IconComponent = option.icon || Home;
-              const isSelected = currentAnswer?.value === option.value;
+        <div className="grid md:grid-cols-2 gap-4">
+          {currentQuestion.options.map((option) => {
+            const IconComponent = option.icon || Home;
+            const isSelected = currentAnswer?.value === option.value;
 
-              return (
-                <Card
-                  key={option.value}
-                  className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
-                    isSelected 
-                      ? "ring-2 ring-zurich-blue bg-zurich-blue/5" 
-                      : "hover:shadow-md"
-                  }`}
-                  onClick={() => handleAnswer(currentQuestion.id, option.value, option.label)}
-                >
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className={`p-3 rounded-full ${
-                        isSelected 
-                          ? "bg-zurich-blue text-white" 
-                          : "bg-gray-100 text-gray-600"
-                      }`}>
-                        <IconComponent className="w-6 h-6" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900 mb-1">
-                          {option.label}
-                        </h4>
-                        {option.description && (
-                          <p className="text-sm text-gray-600">
-                            {option.description}
-                          </p>
-                        )}
-                      </div>
-                      {isSelected && (
-                        <div className="w-6 h-6 bg-zurich-blue rounded-full flex items-center justify-center">
-                          <div className="w-2 h-2 bg-white rounded-full" />
-                        </div>
+            return (
+              <Card
+                key={option.value}
+                className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
+                  isSelected 
+                    ? "ring-2 ring-zurich-blue bg-zurich-blue/5" 
+                    : "hover:shadow-md"
+                }`}
+                onClick={() => handleAnswer(currentQuestion.id, option.value, option.label)}
+              >
+                <CardContent className="p-6">
+                  <div className="flex items-start space-x-4">
+                    <div className={`p-3 rounded-full ${
+                      isSelected 
+                        ? "bg-zurich-blue text-white" 
+                        : "bg-gray-100 text-gray-600"
+                    }`}>
+                      <IconComponent className="w-6 h-6" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-gray-900 mb-1">
+                        {option.label}
+                      </h4>
+                      {option.description && (
+                        <p className="text-sm text-gray-600">
+                          {option.description}
+                        </p>
                       )}
                     </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
+                    {isSelected && (
+                      <div className="w-6 h-6 bg-zurich-blue rounded-full flex items-center justify-center">
+                        <div className="w-2 h-2 bg-white rounded-full" />
+                      </div>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
+      </div>
 
-        <div className="flex justify-between items-center border-t pt-4">
-          <Button
-            variant="outline"
-            onClick={handlePrevious}
-            disabled={currentStep === 0}
-            className="flex items-center space-x-2"
-          >
-            <ChevronLeft className="w-4 h-4" />
-            <span>Anterior</span>
-          </Button>
+      <div className="flex justify-between items-center border-t pt-4">
+        <Button
+          variant="outline"
+          onClick={handlePrevious}
+          disabled={currentStep === 0}
+          className="flex items-center space-x-2"
+        >
+          <ChevronLeft className="w-4 h-4" />
+          <span>Anterior</span>
+        </Button>
 
-          <Button
-            onClick={handleNext}
-            disabled={!canProceed}
-            className="bg-zurich-blue hover:bg-zurich-blue/90 flex items-center space-x-2"
-          >
-            <span>
-              {currentStep === questions.length - 1 ? "Ver Resultado" : "Próxima"}
-            </span>
-            <ChevronRight className="w-4 h-4" />
-          </Button>
-        </div>
-      </DialogContent>
-    </Dialog>
+        <Button
+          onClick={handleNext}
+          disabled={!canProceed}
+          className="bg-zurich-blue hover:bg-zurich-blue/90 flex items-center space-x-2"
+        >
+          <span>
+            {currentStep === questions.length - 1 ? "Ver Resultado" : "Próxima"}
+          </span>
+          <ChevronRight className="w-4 h-4" />
+        </Button>
+      </div>
+    </div>
   );
 };
 
