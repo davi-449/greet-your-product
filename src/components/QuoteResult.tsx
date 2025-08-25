@@ -66,8 +66,8 @@ const QuoteResult: React.FC<QuoteResultProps> = ({ answers, onBack, onStartOver 
           <CardTitle className="text-2xl font-bold">
             {recommendedPlan.name}
           </CardTitle>
-          <div className="text-3xl font-bold">
-            {recommendedPlan.price}
+          <div className="text-xl font-semibold mb-2">
+            Plano Recomendado
           </div>
           <p className={`text-lg ${recommendedPlan.id === 'essencial' ? 'text-gray-600' : 'text-white/90'}`}>
             {recommendedPlan.description}
@@ -150,8 +150,8 @@ const QuoteResult: React.FC<QuoteResultProps> = ({ answers, onBack, onStartOver 
                     </Badge>
                   )}
                   <CardTitle className="text-lg">{plan.name}</CardTitle>
-                  <div className="text-xl font-bold text-zurich-blue">
-                    {plan.price}
+                  <div className="text-sm font-medium text-zurich-blue mb-2">
+                    {plan.description}
                   </div>
                 </CardHeader>
                 <CardContent>
