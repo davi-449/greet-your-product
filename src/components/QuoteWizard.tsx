@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,6 +7,8 @@ import { ChevronLeft, ChevronRight, Home, Smartphone, Shield, DollarSign, Clock,
 interface QuoteWizardProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onComplete: (answers: Answer[]) => void;
+  initialAnswers?: Answer[];
 }
 
 interface Answer {
@@ -102,9 +103,16 @@ const questions: Question[] = [
   }
 ];
 
-const QuoteWizard: React.FC<QuoteWizardProps> = ({ open, onOpenChange }) => {
+const QuoteWizard: React.FC<QuoteWizardProps> = ({ open, onOpenChange, onComplete, initialAnswers = [] }) => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [answers, setAnswers] = useState<Answer[]>(initialAnswers);
+
+  useEffect(() => {
+    if (initialAnswers.length > 0) {
+      setAnswers(initialAnswers);
+      setCurrentStep(initialAnswers.length);
+    }
+  }, [initialAnswers]);
 
   const progress = ((currentStep + 1) / questions.length) * 100;
 
@@ -118,9 +126,8 @@ const QuoteWizard: React.FC<QuoteWizardProps> = ({ open, onOpenChange }) => {
     if (currentStep < questions.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      // Go to results
-      console.log("Final answers:", answers);
-      // TODO: Navigate to results
+      // Complete wizard and go to results
+      onComplete(answers);
     }
   };
 
