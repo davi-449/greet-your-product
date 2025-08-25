@@ -1,11 +1,10 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Shield, Clock } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="bg-gradient-coral min-h-[90vh] flex items-center relative overflow-hidden">
+    <section className="bg-gradient-blue min-h-[90vh] flex items-center relative overflow-hidden">
       <div className="absolute inset-0 bg-black/10"></div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -39,14 +38,14 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg" 
-                className="bg-white text-zurich-coral hover:bg-white/90 text-lg px-8 py-4 hover-lift"
+                className="bg-white text-zurich-blue hover:bg-white/90 text-lg px-8 py-4 hover-lift"
               >
                 Solicitar Cotação
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-white text-white bg-transparent hover:bg-white hover:text-zurich-coral text-lg px-8 py-4"
+                className="border-white text-white bg-transparent hover:bg-white hover:text-zurich-blue text-lg px-8 py-4"
               >
                 Saiba Mais
               </Button>
@@ -55,9 +54,9 @@ const HeroSection = () => {
 
           <div className="relative lg:block hidden">
             <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl hover-lift">
-              <img 
-                src="/lovable-uploads/e32b35e7-1b5c-473e-b13b-a9a7a9c735ae.png"
-                alt="Casal feliz em casa - Zurich Residência"
+              <img
+                src="https://images.pexels.com/photos/7218601/pexels-photo-7218601.jpeg"
+                alt="Casal feliz relaxando no sofá em casa - Zurich Residência"
                 className="w-full h-auto object-cover"
               />
             </div>
