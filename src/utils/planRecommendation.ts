@@ -7,7 +7,6 @@ interface Answer {
 export interface Plan {
   id: "essencial" | "completo" | "completo_plus";
   name: string;
-  price: string;
   features: string[];
   highlighted: string[];
   description: string;
@@ -18,7 +17,6 @@ export const plans: Plan[] = [
   {
     id: "essencial",
     name: "Essencial",
-    price: "R$ 29,90/mês",
     features: [
       "Indicação de mão de obra",
       "Até 4 conjuntos de serviços emergenciais",
@@ -32,7 +30,6 @@ export const plans: Plan[] = [
   {
     id: "completo",
     name: "Completo",
-    price: "R$ 69,90/mês",
     features: [
       "Tudo do plano Essencial",
       "Até 12 conjuntos de serviços emergenciais",
@@ -47,7 +44,6 @@ export const plans: Plan[] = [
   {
     id: "completo_plus",
     name: "Completo +",
-    price: "R$ 119,90/mês",
     features: [
       "Tudo do plano Completo",
       "Regresso antecipado",
@@ -218,8 +214,8 @@ export function calculateRecommendation(answers: Answer[]): {
 export function generateWhatsAppMessage(plan: Plan, answers: Answer[]): string {
   const residence = answers.find(a => a.questionId === "residence_type")?.label || "residência";
   const budget = answers.find(a => a.questionId === "budget")?.label || "";
-  
-  const message = `Olá! Acabei de fazer a simulação no site da Zurich e tenho interesse no *${plan.name}* (${plan.price}).
+
+  const message = `Olá! Acabei de fazer a simulação no site da Zurich e tenho interesse no *${plan.name}*.
 
 📋 *Meu perfil:*
 • Tipo de residência: ${residence}
@@ -228,7 +224,7 @@ export function generateWhatsAppMessage(plan: Plan, answers: Answer[]): string {
 💙 *Plano escolhido: ${plan.name}*
 ${plan.description}
 
-Gostaria de mais informações e fazer a contratação. Quando podemos conversar?`;
+Gostaria de mais informações sobre os valores e fazer a contratação. Quando podemos conversar?`;
 
   return encodeURIComponent(message);
 }
