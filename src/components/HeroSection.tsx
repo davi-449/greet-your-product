@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Shield, Clock } from "lucide-react";
+import QuoteFlow from "./QuoteFlow";
 
 const HeroSection = () => {
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+
   return (
     <section className="bg-gradient-blue min-h-[90vh] flex items-center relative overflow-hidden">
       <div className="absolute inset-0 bg-black/10"></div>
@@ -36,15 +39,16 @@ const HeroSection = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-white text-zurich-blue hover:bg-white/90 text-lg px-8 py-4 hover-lift"
+                onClick={() => setIsQuoteOpen(true)}
               >
                 Solicitar Cotação
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
+              <Button
+                size="lg"
+                variant="outline"
                 className="border-white text-white bg-transparent hover:bg-white hover:text-zurich-blue text-lg px-8 py-4"
               >
                 Saiba Mais
@@ -67,6 +71,11 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      <QuoteFlow
+        open={isQuoteOpen}
+        onOpenChange={setIsQuoteOpen}
+      />
     </section>
   );
 };
